@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_go_fruits_api_1686138886411-pr-trigger-input-set
+  identifier: Build_go_fruits_api_1686138886411prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: OWASP
+  pipeline:
+    identifier: Build_go_fruits_api_1686138886411
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>

@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_go_fruits_api_1686567366994-pr-trigger-input-set
+  identifier: Build_go_fruits_api_1686567366994prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Build_go_fruits_api_1686567366994
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>

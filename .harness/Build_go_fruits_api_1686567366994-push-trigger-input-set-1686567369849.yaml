@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_go_fruits_api_1686567366994-push-trigger-input-set
+  identifier: Build_go_fruits_api_1686567366994pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Build_go_fruits_api_1686567366994
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>

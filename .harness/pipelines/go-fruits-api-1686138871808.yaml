@@ -56,6 +56,12 @@ pipeline:
                         echo "${issues}"
                         exit 1
                       fi
+                  failureStrategies:
+                    - onFailure:
+                        errors:
+                          - InputTimeoutError
+                        action:
+                          type: MarkAsFailure
           platform:
             arch: Amd64
             os: Linux

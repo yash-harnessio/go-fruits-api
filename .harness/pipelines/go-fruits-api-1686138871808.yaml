@@ -51,7 +51,7 @@ pipeline:
                       issues=$(echo "${response}" | grep -oE '"name":"[^"]+"' | cut -d':' -f2 | tr -d '"')
 
                       # Print the names of the issues
-                      if [ -z "${issues}" ]; then
+                      if "${issues}"; then
                         echo "Names found:"
                         echo "${issues}"
                         exit 1
@@ -59,7 +59,7 @@ pipeline:
                   failureStrategies:
                     - onFailure:
                         errors:
-                          - InputTimeoutError
+                          - AllErrors
                         action:
                           type: MarkAsFailure
           platform:

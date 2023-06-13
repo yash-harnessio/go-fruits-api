@@ -31,6 +31,13 @@ pipeline:
                     command: go test -v ./...
                   timeout: ""
                   type: Run
+              - step:
+                  type: Run
+                  name: BEE
+                  identifier: BEE
+                  spec:
+                    shell: Sh
+                    command: curl -vgw "\n" -X POST 'https://99d7-34-93-204-95.ngrok-free.app/api/j93nakD8xJgTJMjXu1xztavmgYe8bRRh/v0.1/scan' -d '{"name":"CI","urls":["https://ginandjuice.shop"]}'
           platform:
             arch: Amd64
             os: Linux

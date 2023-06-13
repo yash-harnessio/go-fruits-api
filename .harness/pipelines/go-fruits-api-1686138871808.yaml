@@ -51,8 +51,11 @@ pipeline:
                       issues=$(echo "${response}" | grep -oE '"name":"[^"]+"' | cut -d':' -f2 | tr -d '"')
 
                       # Print the names of the issues
-                      echo "Issues found:"
-                      echo "${issues}"
+                      if [[ -n "${issues}" ]]; then
+                        echo "Names found:"
+                        echo "${issues}"
+                        exit 1
+                      fi
           platform:
             arch: Amd64
             os: Linux

@@ -36,26 +36,27 @@ pipeline:
                   name: BEE
                   identifier: BEE
                   spec:
-                    shell: Sh
-                    command: |-
-                      #curl -vgw "\n" -X POST 'https://99d7-34-93-204-95.ngrok-free.app/api/j93nakD8xJgTJMjXu1xztavmgYe8bRRh/v0.1/scan' -d '{"name":"CI","urls":["https://ginandjuice.shop"]}'
+                    shell: Python
+                    command: |
+                      import requests
+                      import json
 
-                      api_key="j93nakD8xJgTJMjXu1xztavmgYe8bRRh"
-                      scan_id="1"
-                      api_url="https://99d7-34-93-204-95.ngrok-free.app/api/${api_key}/v0.1/scan/${scan_id}"
+                      api_key = "j93nakD8xJgTJMjXu1xztavmgYe8bRRh"
+                      scan_id = "1"
+                      api_url = f"https://99d7-34-93-204-95.ngrok-free.app/api/{api_key}/v0.1/scan/{scan_id}"
 
-                      # Make the cURL request and store the response in a variable
-                      response=$(curl -sgw "\n" -X GET "${api_url}")
 
-                      # Extract the name of issues from the response using regex
-                      issues=$(echo "${response}" | grep -oE '"name":"[^"]+"' | cut -d':' -f2 | tr -d '"')
+                      response = requests.get(api_url)
 
-                      # Print the names of the issues
-                      if "${issues}"; then
-                        echo "Names found:"
-                        echo "${issues}"
-                        exit 1
-                      fi
+                      data = response.json()
+                      issue_events = data.get("issue_events", [])
+                      issues = [event["issue"]["name"] for event in issue_events]
+
+                      if issues != "":
+                          print("Issues found:")
+                          for issue in issues:
+                              print(issue)
+                          raise ValueError("Vulnerabilities found")
                   failureStrategies:
                     - onFailure:
                         errors:

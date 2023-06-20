@@ -36,7 +36,7 @@ pipeline:
 
                       api_key = "j93nakD8xJgTJMjXu1xztavmgYe8bRRh"
                       scan_id = "1"
-                      api_url = f"https://99d7-34-93-204-95.ngrok-free.app/api/{api_key}/v0.1/scan/{scan_id}"
+                      api_url = f"https://7314-2405-201-6003-a8e9-18fd-fe1c-ea30-9f6e.ngrok-free.app/api/{api_key}/v0.1/scan/{scan_id}"
 
 
                       response = requests.get(api_url)

